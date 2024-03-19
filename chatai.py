@@ -13,13 +13,13 @@ from keras.models import load_model
 
 app = Flask(__name__)
 
-nltk.data.path.append('./data/nltk_data')  # путь до папки с данными
+nltk.data.path.append('SimpleChatAI\\data\\nltk_data')  # путь до папки с данными
 
 # Загрузка данных и модели
-words = pickle.load(open('./data/words.pkl', 'rb'))
-classes = pickle.load(open('./data/classes.pkl', 'rb'))
-model = load_model('./data/hackaton_model.keras')
-intents = json.loads(open('./data/intents.json', encoding='utf-8').read())
+words = pickle.load(open('SimpleChatAI\\data\\words.pkl', 'rb'))
+classes = pickle.load(open('SimpleChatAI\\data\\classes.pkl', 'rb'))
+model = load_model('SimpleChatAI\\data\\hackatonnew_model.keras')
+intents = json.loads(open('SimpleChatAI\\data\\intents.json', encoding='utf-8').read())
 
 
 def clean_up_sentence(sentence):

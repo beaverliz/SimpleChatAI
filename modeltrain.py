@@ -85,6 +85,6 @@ model.compile(loss='categorical_crossentropy', optimizer=sgd, metrics=['accuracy
 hist = model.fit(np.array(train_x), np.array(train_y), epochs=200, batch_size=5, verbose=1)
 
 # Сохранение модели
-model.save('SimpleChatAI/data/hackaton_model.keras', hist)
+model.save('SimpleChatAI/data/hackatonnew_model.keras', hist)
 
 #print("Модель создана")
