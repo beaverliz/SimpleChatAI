@@ -8,13 +8,13 @@ from keras.layers import Dense, Activation, Dropout,LSTM,Embedding
 from keras.optimizers import SGD, Adam
 import random
 from keras.optimizers import Adam
-
+nltk.data.path.append('SimpleChatAI\\data\\nltk_data')  # путь до папки с данными
 
 words = []
 classes = []
 documents = []
 ignore_words = ['?', '!']
-data_file = open('./data/intents.json',encoding='utf-8').read()
+data_file = open('SimpleChatAI\\data\\intents.json',encoding='utf-8').read()
 intents = json.loads(data_file)
 
 lemmatizer = WordNetLemmatizer()
@@ -44,8 +44,8 @@ classes = sorted(list(set(classes)))
 # words = all words, vocabulary
 #print(len(words), "unique lemmatized words", words)
 
-pickle.dump(words, open('./data/words.pkl', 'wb'))
-pickle.dump(classes, open('./data/classes.pkl', 'wb'))
+pickle.dump(words, open('SimpleChatAI/data/words.pkl', 'wb'))
+pickle.dump(classes, open('SimpleChatAI/data/classes.pkl', 'wb'))
 
 
 training = []
@@ -85,6 +85,6 @@ model.compile(loss='categorical_crossentropy', optimizer=sgd, metrics=['accuracy
 hist = model.fit(np.array(train_x), np.array(train_y), epochs=200, batch_size=5, verbose=1)
 
 # Сохранение модели
-model.save('./data/hackaton_model.keras', hist)
+model.save('SimpleChatAI/data/hackaton_model.keras', hist)
 
 #print("Модель создана")
