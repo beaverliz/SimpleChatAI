@@ -9,17 +9,20 @@ import re
 import random
 import numpy as np
 import pickle
+import pytz
 from keras.models import load_model
 
 app = Flask(__name__)
 
-nltk.data.path.append('SimpleChatAI\\data\\nltk_data')  # путь до папки с данными
+nltk.data.path.append('./data/nltk_data')  # путь до папки с данными
 
 # Загрузка данных и модели
-words = pickle.load(open('SimpleChatAI\\data\\words.pkl', 'rb'))
-classes = pickle.load(open('SimpleChatAI\\data\\classes.pkl', 'rb'))
-model = load_model('SimpleChatAI\\data\\hackatonnew_model.keras')
-intents = json.loads(open('SimpleChatAI\\data\\intents.json', encoding='utf-8').read())
+words = pickle.load(open('./data/words.pkl', 'rb'))
+classes = pickle.load(open('./data/classes.pkl', 'rb'))
+model = load_model('./data/hackatonnew_model.keras')
+intents = json.loads(open('./data/intents.json', encoding='utf-8').read())
+
+now = datetime.now()
 
 
 def clean_up_sentence(sentence):
@@ -88,7 +91,8 @@ def get_response_from_model():
 
         return jsonify({
             "responseMessage": response_message,
-            "responseTime": datetime.now(timezone.utc).isoformat()
+            "responseTime": now.strftime("%d.%m.%Y %H:%M:%S")
+
         })
     except Exception as e:
         return jsonify({

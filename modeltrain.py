@@ -82,7 +82,7 @@ sgd = Adam(learning_rate=0.001)
 model.compile(loss='categorical_crossentropy', optimizer=sgd, metrics=['accuracy'])
 
 # Обучение модели
-hist = model.fit(np.array(train_x), np.array(train_y), epochs=200, batch_size=5, verbose=1)
+hist = model.fit(np.array(train_x), np.array(train_y), epochs=100, batch_size=5, verbose=1)
 
 # Сохранение модели
 model.save('SimpleChatAI/data/hackatonnew_model.keras', hist)
