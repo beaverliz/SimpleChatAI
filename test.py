@@ -2,7 +2,7 @@ import requests
 import json
 
 url = 'http://127.0.0.1:5000/getResponseFromTheModel'
-data = {'requestMessage': 'Какой функционал у IMS4'}
+data = {'requestMessage': 'доступ'}
 
 headers = {'Content-Type': 'application/json'}
 

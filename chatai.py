@@ -1,15 +1,12 @@
 
 from flask import Flask, request, jsonify
 import json
-from datetime import datetime, timezone
+from datetime import datetime
 import nltk
-from nltk.tokenize import word_tokenize
 from nltk.stem import WordNetLemmatizer
-import re
 import random
 import numpy as np
 import pickle
-import pytz
 from keras.models import load_model
 
 app = Flask(__name__)
@@ -50,7 +47,7 @@ def predict_class(sentence):
     # Получение вероятностного распределения для каждого класса
     p = bow(sentence, words, show_details=False)
     res = model.predict(np.array([p]))[0]
-    ERROR_THRESHOLD = 0.25
+    ERROR_THRESHOLD = 0.5
     results = [[i, r] for i, r in enumerate(res) if r > ERROR_THRESHOLD]
 
     # Сортировка результатов по вероятности
