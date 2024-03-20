@@ -47,7 +47,7 @@ def predict_class(sentence):
     # Получение вероятностного распределения для каждого класса
     p = bow(sentence, words, show_details=False)
     res = model.predict(np.array([p]))[0]
-    ERROR_THRESHOLD = 0.5
+    ERROR_THRESHOLD = 0.7
     results = [[i, r] for i, r in enumerate(res) if r > ERROR_THRESHOLD]
 
     # Сортировка результатов по вероятности
